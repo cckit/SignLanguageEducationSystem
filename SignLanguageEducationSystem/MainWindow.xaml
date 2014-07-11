@@ -5,7 +5,7 @@
         Title="MainWindow" Height="350" Width="800" WindowState="Maximized">
     <Grid>
 		<k:KinectRegion Name="kinectRegion">
-			<k:KinectTileButton Label="Start!" Width="Auto" Height="Auto">
+			<k:KinectTileButton x:Name="btnStart" Label="Start!" Width="Auto" Height="Auto" Click="KinectTileButton_Click" ClickMode="Press">
 				<k:KinectTileButton.Style>
 					<Style TargetType="{x:Type k:KinectTileButton}">
 						<Setter Property="Visibility" Value="Hidden" />

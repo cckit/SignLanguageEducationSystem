@@ -77,5 +77,9 @@ namespace SignLanguageEducationSystem {
 				systemStatusCollection.IsKinectAllSet = false;
 			}
 		}
+
+		private void KinectTileButton_Click(object sender, RoutedEventArgs e) {
+			
+		}
 	}
 }
