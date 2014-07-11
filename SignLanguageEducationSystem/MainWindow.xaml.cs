@@ -22,10 +22,11 @@ namespace SignLanguageEducationSystem {
 	public partial class MainWindow : Window {
 
 		private KinectSensorChooser sensorChooser;
+		private SystemStatusCollection systemStatusCollection;
 
 		public MainWindow() {
 			InitializeComponent();
-
+			this.DataContext = systemStatusCollection = new SystemStatusCollection();
 			Loaded += MainWindow_Loaded;
 		}
 
@@ -65,10 +66,15 @@ namespace SignLanguageEducationSystem {
 						error = true;
 					}
 				} catch (InvalidOperationException) { error = true; }
+			} else {
+				error = true;
 			}
 
 			if (!error) {
 				this.kinectRegion.KinectSensor = args.NewSensor;
+				systemStatusCollection.IsKinectAllSet = true;
+			} else {
+				systemStatusCollection.IsKinectAllSet = false;
 			}
 		}
 	}
