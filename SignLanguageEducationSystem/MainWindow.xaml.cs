@@ -23,10 +23,14 @@ namespace SignLanguageEducationSystem {
 
 		private KinectSensorChooser sensorChooser;
 		private SystemStatusCollection systemStatusCollection;
+		private StartPage startPage;
 
 		public MainWindow() {
 			InitializeComponent();
 			this.DataContext = systemStatusCollection = new SystemStatusCollection();
+			this.startPage = new StartPage(systemStatusCollection);
+			this.kinectRegionGrid.Children.Add(this.startPage);
+
 			Loaded += MainWindow_Loaded;
 		}
 
@@ -76,10 +80,6 @@ namespace SignLanguageEducationSystem {
 			} else {
 				systemStatusCollection.IsKinectAllSet = false;
 			}
-		}
-
-		private void KinectTileButton_Click(object sender, RoutedEventArgs e) {
-			
 		}
 	}
 }

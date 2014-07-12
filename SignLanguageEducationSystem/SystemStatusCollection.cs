@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SignLanguageEducationSystem {
 
-	class SystemStatusCollection : AutoNotifyPropertyChanged {
+	public class SystemStatusCollection : AutoNotifyPropertyChanged {
 
 		private bool _isKinectAllSet;
 		public bool IsKinectAllSet {
