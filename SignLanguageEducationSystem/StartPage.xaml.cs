@@ -18,13 +18,23 @@ namespace SignLanguageEducationSystem {
 	/// Interaction logic for StartPage.xaml
 	/// </summary>
 	public partial class StartPage : UserControl {
+
+		private HomePage homePage;
+
 		public StartPage(SystemStatusCollection systemStatusCollection) {
 			InitializeComponent();
 			this.DataContext = systemStatusCollection;
 		}
 
 		private void KinectTileButton_Click(object sender, RoutedEventArgs e) {
-			
+			if (homePage == null) {
+				homePage = new HomePage((SystemStatusCollection)this.DataContext);
+			}
+
+			UIElementCollection children = ((Panel)this.Parent).Children;
+			if (!children.Contains(homePage)) {
+				children.Add(homePage);
+			}
 		}
 	}
 }
