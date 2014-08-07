@@ -35,8 +35,14 @@ namespace SignLanguageEducationSystem {
 
 		private KinectTileButton createKinectButton(SignWord signWord) {
 			KinectTileButton button = new KinectTileButton();
+			button.DataContext = signWord;
+			button.Click += btnSignWord_Click;
 			button.Label = signWord.Name;
 			return button;
+		}
+
+		private void btnSignWord_Click(object sender, RoutedEventArgs e) {
+			KinectTileButton button = (KinectTileButton)sender;
 		}
 	}
 }
