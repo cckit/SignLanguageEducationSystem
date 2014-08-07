@@ -93,6 +93,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\SignWord.cs" />
     <Compile Include="SignBrowserPage.xaml.cs">
       <DependentUpon>SignBrowserPage.xaml</DependentUpon>
     </Compile>

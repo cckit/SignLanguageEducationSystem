@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Kinect.Toolkit.Controls;
 
 namespace SignLanguageEducationSystem {
 	/// <summary>
@@ -30,6 +31,12 @@ namespace SignLanguageEducationSystem {
 					children.Remove(this);
 				}
 			}
+		}
+
+		private KinectTileButton createKinectButton(SignWord signWord) {
+			KinectTileButton button = new KinectTileButton();
+			button.Label = signWord.Name;
+			return button;
 		}
 	}
 }

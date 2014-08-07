@@ -38,10 +38,10 @@
 			</Grid>
 		</k:KinectCircleButton>
 		
-		<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,156,0,0" FontSize="50pt" FontWeight="Light" Foreground="#FF5a5b5b" Text="Sign Browser"/>
+		<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="215,84,0,0" FontSize="50pt" FontWeight="Light" Foreground="#FF5a5b5b" Text="Sign Browser"/>
 
-		<k:KinectScrollViewer Name="KinectScrollViewer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,288,195,75" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-			<Image Source="{Binding PannableImage}"></Image>
+		<k:KinectScrollViewer Name="KinectScrollViewer" Margin="195,215,195,30.168" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  CanContentScroll="True">
+			<WrapPanel HorizontalAlignment="Center" Name="panelSignList"/>
 		</k:KinectScrollViewer>
 	</Grid>
 </UserControl>
