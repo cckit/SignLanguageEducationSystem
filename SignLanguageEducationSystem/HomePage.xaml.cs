@@ -19,6 +19,9 @@ namespace SignLanguageEducationSystem {
 	/// Interaction logic for HomePage.xaml
 	/// </summary>
 	public partial class HomePage : UserControl {
+
+		private SignBrowserPage signBrowserPage;
+
 		public HomePage(SystemStatusCollection systemStatusCollection) {
 			InitializeComponent();
 			this.DataContext = systemStatusCollection;
@@ -37,6 +40,14 @@ namespace SignLanguageEducationSystem {
 		}
 
 		private void btnLearn_Click(object sender, RoutedEventArgs e) {
+			if (signBrowserPage == null) {
+				signBrowserPage = new SignBrowserPage((SystemStatusCollection) this.DataContext);
+			}
+
+			UIElementCollection children = ((Panel)this.Parent).Children;
+			if (!children.Contains(signBrowserPage)) {
+				children.Add(signBrowserPage);
+			}
 		}
 
 		private void btnWatchVideo_Click(object sender, RoutedEventArgs e) {
