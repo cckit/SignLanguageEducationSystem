@@ -75,9 +75,10 @@ namespace SignLanguageEducationSystem {
 			}
 
 			if (!error) {
-				this.kinectRegion.KinectSensor = args.NewSensor;
+				this.kinectRegion.KinectSensor = systemStatusCollection.CurrentKinectSensor = args.NewSensor;
 				systemStatusCollection.IsKinectAllSet = true;
 			} else {
+				this.kinectRegion.KinectSensor = systemStatusCollection.CurrentKinectSensor = null;
 				systemStatusCollection.IsKinectAllSet = false;
 			}
 		}

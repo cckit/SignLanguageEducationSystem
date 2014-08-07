@@ -19,9 +19,15 @@ namespace SignLanguageEducationSystem {
 	/// Interaction logic for SignBrowserPage.xaml
 	/// </summary>
 	public partial class SignBrowserPage : UserControl {
+
+		private SignWordPage signWordPage;
+
 		public SignBrowserPage(SystemStatusCollection systemStatusCollection) {
 			InitializeComponent();
 			this.DataContext = systemStatusCollection;
+			for (int i = 0; i < 10; i++) {
+				panelSignList.Children.Add(createKinectButton(new SignWord(i + "")));
+			}
 		}
 
 		private void btnBack_Click(object sender, RoutedEventArgs e) {
@@ -43,6 +49,16 @@ namespace SignLanguageEducationSystem {
 
 		private void btnSignWord_Click(object sender, RoutedEventArgs e) {
 			KinectTileButton button = (KinectTileButton)sender;
+
+			if (signWordPage == null) {
+				signWordPage = new SignWordPage((SystemStatusCollection)this.DataContext);
+			}
+			((SystemStatusCollection)this.DataContext).CurrentSignWordName = ((SignWord)button.DataContext).Name;
+
+			UIElementCollection children = ((Panel)this.Parent).Children;
+			if (!children.Contains(signWordPage)) {
+				children.Add(signWordPage);
+			}
 		}
 	}
 }
