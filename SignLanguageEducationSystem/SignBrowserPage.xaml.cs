@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,10 @@ namespace SignLanguageEducationSystem {
 		public SignBrowserPage(SystemStatusCollection systemStatusCollection) {
 			InitializeComponent();
 			this.DataContext = systemStatusCollection;
-			for (int i = 0; i < 10; i++) {
-				panelSignList.Children.Add(createKinectButton(new SignWord(i + "")));
+
+			foreach (DataRow row in systemStatusCollection.SignWordTable.Rows) {
+				string name = (string)row["Chinese Name"];
+				panelSignList.Children.Add(createKinectButton(new SignWord(name)));
 			}
 		}
 
