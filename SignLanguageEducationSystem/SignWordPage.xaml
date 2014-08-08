@@ -45,6 +45,8 @@
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
+
+			<MediaElement x:Name="videoPlayer" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" UnloadedBehavior="Stop" Stretch="Fill" IsMuted="True" Source="{Binding CurrentSignWord.Path, Mode=OneWay}" Loaded="videoPlayer_Loaded" MediaEnded="videoPlayer_MediaEnded" LoadedBehavior="Manual"/>
 			<Image x:Name="KinectImage" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Source="{Binding ColorBitmap, Mode=OneWay}" Stretch="UniformToFill"/>
 		</Grid>
 

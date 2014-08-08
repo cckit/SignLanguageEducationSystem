@@ -29,7 +29,8 @@ namespace SignLanguageEducationSystem {
 
 			foreach (DataRow row in systemStatusCollection.SignWordTable.Rows) {
 				string name = (string)row["Chinese Name"];
-				panelSignList.Children.Add(createKinectButton(new SignWord(name)));
+				string id = (string)row["Sign ID"];
+				panelSignList.Children.Add(createKinectButton(new SignWord(name, id)));
 			}
 		}
 

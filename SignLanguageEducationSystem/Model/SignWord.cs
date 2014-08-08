@@ -11,8 +11,20 @@ namespace SignLanguageEducationSystem {
 			private set;
 		}
 
-		public SignWord(String name) {
+		public string ID {
+			get;
+			private set;
+		}
+		public string Path {
+			get {
+				Console.WriteLine("Data/Videos/" + ID + ".avi");
+				return "Data/Videos/" + ID + ".avi"; }
+			private set { }
+		}
+
+		public SignWord(String name, String id) {
 			this.Name = name;
+			this.ID = id;
 		}
 	}
 }

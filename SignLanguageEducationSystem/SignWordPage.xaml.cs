@@ -20,6 +20,7 @@ namespace SignLanguageEducationSystem {
 	/// </summary>
 	public partial class SignWordPage : UserControl {
 		private byte[] _colorPixels;
+		private bool isPlayed;
 
 		public SignWordPage(SystemStatusCollection systemStatusCollection) {
 			InitializeComponent();
@@ -34,7 +35,7 @@ namespace SignLanguageEducationSystem {
 
 		private void CurrentKinectSensor_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e) {
 			using (ColorImageFrame colorFrame = e.OpenColorImageFrame()) {
-				if (colorFrame != null) {
+				if (colorFrame != null && isPlayed) {
 					WriteableBitmap ColorBitmap = ((SystemStatusCollection)this.DataContext).ColorBitmap;
 
 					colorFrame.CopyPixelDataTo(this._colorPixels);
@@ -56,6 +57,15 @@ namespace SignLanguageEducationSystem {
 					children.Remove(this);
 				}
 			}
+		}
+
+		private void videoPlayer_Loaded(object sender, RoutedEventArgs e) {
+			isPlayed = false;
+			videoPlayer.Play();
+		}
+
+		private void videoPlayer_MediaEnded(object sender, RoutedEventArgs e) {
+			isPlayed = true;
 		}
 	}
 }
