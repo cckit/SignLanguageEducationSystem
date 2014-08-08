@@ -24,6 +24,16 @@ namespace SignLanguageEducationSystem {
 		public StartPage(SystemStatusCollection systemStatusCollection) {
 			InitializeComponent();
 			this.DataContext = systemStatusCollection;
+
+			BitmapImage bi = new BitmapImage();
+			bi.BeginInit();
+			bi.UriSource = new Uri("Data/Images/back01.png", UriKind.Relative);
+			bi.EndInit();
+
+			ImageBrush b = new ImageBrush(bi);
+			b.AlignmentY = 0;
+			b.Stretch = Stretch.UniformToFill;
+			btnStart.Background = b;
 		}
 
 		private void KinectTileButton_Click(object sender, RoutedEventArgs e) {
