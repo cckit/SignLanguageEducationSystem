@@ -17,7 +17,6 @@ namespace SignLanguageEducationSystem {
 		}
 		public string Path {
 			get {
-				Console.WriteLine("Data/Videos/" + ID + ".avi");
 				return "Data/Videos/" + ID + ".avi"; }
 			private set { }
 		}
