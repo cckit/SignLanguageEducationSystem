@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using Microsoft.Kinect;
+using System.Windows.Media.Imaging;
 
 namespace SignLanguageEducationSystem {
 
@@ -27,6 +29,12 @@ namespace SignLanguageEducationSystem {
 		public KinectSensor CurrentKinectSensor {
 			get { return _currentKinectSensor; }
 			set { SetProperty(ref _currentKinectSensor, value, true); }
+		}
+
+		private WriteableBitmap _colorBitmap;
+		public WriteableBitmap ColorBitmap {
+			get { return _colorBitmap; }
+			set { SetProperty(ref _colorBitmap, value, true); }
 		}
 
 		/* Input Format 

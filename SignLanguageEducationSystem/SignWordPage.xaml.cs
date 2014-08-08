@@ -19,19 +19,32 @@ namespace SignLanguageEducationSystem {
 	/// Interaction logic for SignWordPage.xaml
 	/// </summary>
 	public partial class SignWordPage : UserControl {
+		private byte[] _colorPixels;
+
 		public SignWordPage(SystemStatusCollection systemStatusCollection) {
 			InitializeComponent();
 			this.DataContext = systemStatusCollection;
 
+			systemStatusCollection.ColorBitmap = new WriteableBitmap(640, 480, 96.0, 96.0, PixelFormats.Bgr32, null);
+
 			systemStatusCollection.CurrentKinectSensor.ColorStream.Enable();
+			_colorPixels = new byte[systemStatusCollection.CurrentKinectSensor.ColorStream.FramePixelDataLength];
 			systemStatusCollection.CurrentKinectSensor.ColorFrameReady += CurrentKinectSensor_ColorFrameReady;
 		}
 
 		private void CurrentKinectSensor_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e) {
 			using (ColorImageFrame colorFrame = e.OpenColorImageFrame()) {
 				if (colorFrame != null) {
-					Byte[] pixels = new Byte[colorFrame.PixelDataLength];
-					colorFrame.CopyPixelDataTo(pixels);
+					WriteableBitmap ColorBitmap = ((SystemStatusCollection)this.DataContext).ColorBitmap;
+
+					colorFrame.CopyPixelDataTo(this._colorPixels);
+					((SystemStatusCollection)this.DataContext).ColorBitmap.Lock();
+					ColorBitmap.WritePixels(
+						new System.Windows.Int32Rect(0, 0, ColorBitmap.PixelWidth, ColorBitmap.PixelHeight),
+						_colorPixels,
+						ColorBitmap.PixelWidth * sizeof(int),
+						0);
+					ColorBitmap.Unlock();
 				}
 			}
 		}
