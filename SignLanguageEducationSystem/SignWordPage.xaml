@@ -39,7 +39,7 @@
 			</Grid>
 		</k:KinectCircleButton>
 
-		<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="215,84,0,0" FontSize="50pt" FontWeight="Light" Foreground="#FF5a5b5b" Text="{Binding CurrentSignWordName}"/>
+		<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="215,84,0,0" FontSize="50pt" FontWeight="Light" Foreground="#FF5a5b5b" Text="{Binding CurrentSignWord.Name}"/>
 		<Grid Margin="45,215,45,60">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition/>

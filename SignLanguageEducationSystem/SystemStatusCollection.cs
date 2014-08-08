@@ -17,10 +17,10 @@ namespace SignLanguageEducationSystem {
 			set { SetProperty(ref _isKinectAllSet, value, true); }
 		}
 
-		private String _currentSignWordName = "";
-		public String CurrentSignWordName {
-			get { return _currentSignWordName; }
-			set { SetProperty(ref _currentSignWordName, value, true); }
+		private SignWord _currentSignWord;
+		public SignWord CurrentSignWord {
+			get { return _currentSignWord; }
+			set { SetProperty(ref _currentSignWord, value, true); }
 		}
 
 		private KinectSensor _currentKinectSensor;

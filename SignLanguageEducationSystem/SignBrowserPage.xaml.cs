@@ -56,7 +56,7 @@ namespace SignLanguageEducationSystem {
 			if (signWordPage == null) {
 				signWordPage = new SignWordPage((SystemStatusCollection)this.DataContext);
 			}
-			((SystemStatusCollection)this.DataContext).CurrentSignWordName = ((SignWord)button.DataContext).Name;
+			((SystemStatusCollection)this.DataContext).CurrentSignWord = ((SignWord)button.DataContext);
 
 			UIElementCollection children = ((Panel)this.Parent).Children;
 			if (!children.Contains(signWordPage)) {
