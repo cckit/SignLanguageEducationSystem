@@ -35,7 +35,7 @@ namespace SignLanguageEducationSystem {
 
 		private void CurrentKinectSensor_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e) {
 			using (ColorImageFrame colorFrame = e.OpenColorImageFrame()) {
-				if (colorFrame != null && isPlayed) {
+				if (colorFrame != null) {
 					WriteableBitmap ColorBitmap = ((SystemStatusCollection)this.DataContext).ColorBitmap;
 
 					colorFrame.CopyPixelDataTo(this._colorPixels);
@@ -61,11 +61,13 @@ namespace SignLanguageEducationSystem {
 
 		private void videoPlayer_Loaded(object sender, RoutedEventArgs e) {
 			isPlayed = false;
+			WaitingImage.Visibility = Visibility.Visible;
 			videoPlayer.Play();
 		}
 
 		private void videoPlayer_MediaEnded(object sender, RoutedEventArgs e) {
 			isPlayed = true;
+			WaitingImage.Visibility = Visibility.Hidden;
 		}
 	}
 }
